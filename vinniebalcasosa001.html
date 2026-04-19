@@ -4,158 +4,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hormigón. Forma. Función. - Arquitectura Brutalista</title>
+    <title>JST.[studio] - Arquitectura Brutalista</title>
     <link rel="stylesheet" href="styles.css">
-    <meta name="description"
-        content="Portafolio de arquitectura brutalista. No escondemos la estructura. Celebramos la crudeza de los materiales.">
+    <meta name="description" content="Estudio de arquitectura brutalista hiperrealista.">
     <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
-    <!-- Canvas for 3D Background -->
+    <!-- 3D Parallax Canvas -->
     <canvas id="bg-canvas"></canvas>
 
-    <main>
-        <!-- Hero Section -->
-        <section
-            style="min-height: 90vh; padding: 2rem; display: flex; flex-direction: column; justify-content: flex-end; position: relative; z-index: 2;">
-            <h1 class="text-huge" style="max-width: 1200px;">
+    <!-- App Container for Slides -->
+    <main id="app-container">
+
+        <!-- SLIDE 1: Hero -->
+        <section class="slide active" id="slide-0" onclick="nextSlide()">
+            <h1 class="text-huge">
                 HORMIGÓN.<br />
                 FORMA.<br />
                 FUNCIÓN.
             </h1>
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 4rem;">
-                <p
-                    style="max-width: 400px; font-size: 1.25rem; font-weight: 500; background: var(--background); padding: 1rem; border: var(--border-thickness) solid var(--foreground);">
-                    No escondemos la estructura. Celebramos la crudeza de los materiales. La arquitectura es la máquina
-                    en la que vivimos.
-                </p>
-                <button class="brutalist-btn"
-                    onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})">EXPLORAR
-                    PROYECTOS</button>
-            </div>
+            <p
+                style="font-size: 1.5rem; background: var(--background); padding: 1rem; border: 4px solid var(--foreground); text-align: center; max-width: 600px;">
+                La arquitectura es la máquina en la que vivimos.
+            </p>
+            <div class="click-indicator">HAZ CLIC PARA NAVEGAR</div>
         </section>
 
-        <!-- Marquee -->
-        <div class="marquee-container" style="position: relative; z-index: 2; background: var(--background);">
-            <div class="marquee-content">
-                BÉTON BRUT // MATERIALIDAD CRUDA // GEOMETRÍA MONUMENTAL // EXPRESIÓN ESTRUCTURAL // BÉTON BRUT //
-                MATERIALIDAD CRUDA // GEOMETRÍA MONUMENTAL //
-            </div>
-        </div>
-
-        <!-- Projects Grid -->
-        <section id="work" class="grid-container"
-            style="padding: 4rem 1rem; position: relative; z-index: 2; background: var(--background);">
-            <div class="col-span-full">
-                <h2 class="text-large" style="margin-bottom: 2rem;">OBRAS DESTACADAS</h2>
-            </div>
-
-            <!-- Torre Monolito -->
-            <div class="col-span-half brutalist-container project-card"
+        <!-- SLIDE 2: Project 1 -->
+        <section class="slide" id="slide-1" onclick="nextSlide()">
+            <h2 class="text-large"
+                style="position: absolute; top: 10%; background: var(--background); padding: 0.5rem 1rem; border: 4px solid var(--foreground);">
+                OBRA DESTACADA</h2>
+            <div class="brutalist-container project-card"
                 style="background: var(--foreground); color: var(--background);">
-                <img src="/Users/jst/.gemini/antigravity/brain/b88e181a-a9ec-440e-bacf-cbef88390638/torre_monolito_1776554043233.png"
-                    alt="Torre Monolito" class="project-img">
+                <img src="img/1d058d416dbc932fb57fafb76691c173.jpg" alt="Torre Monolito" class="project-img">
                 <div class="project-info">
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">TORRE MONOLITO</h3>
-                    <p style="font-family: 'Space Mono', monospace; margin-bottom: 2rem;">2024 / TOKYO</p>
+                    <div>
+                        <h3 style="font-size: 3rem; margin-bottom: 1rem;">TORRE MONOLITO</h3>
+                        <p style="font-family: 'Space Mono', monospace; font-size: 1.5rem; opacity: 0.8;">2024 / TOKYO
+                        </p>
+                    </div>
                     <button class="brutalist-btn"
-                        style="background: var(--foreground); color: var(--background); border-color: var(--background); width: 100%;">VER
+                        style="background: var(--foreground); color: var(--background); border-color: var(--background);">VER
                         DETALLE</button>
                 </div>
             </div>
-
-            <!-- Complejo Habitacional Zero -->
-            <div class="col-span-half brutalist-container project-card"
-                style="background: var(--background); color: var(--foreground);">
-                <img src="/Users/jst/.gemini/antigravity/brain/b88e181a-a9ec-440e-bacf-cbef88390638/complejo_zero_1776554057540.png"
-                    alt="Complejo Habitacional Zero" class="project-img">
-                <div class="project-info">
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">COMPLEJO HABITACIONAL ZERO</h3>
-                    <p style="font-family: 'Space Mono', monospace; margin-bottom: 2rem;">2023 / BERLIN</p>
-                    <button class="brutalist-btn" style="width: 100%;">VER DETALLE</button>
-                </div>
-            </div>
+            <div class="click-indicator">SIGUIENTE PROYECTO</div>
         </section>
 
-        <!-- Philosophy Section -->
-        <section id="about"
-            style="padding: 8rem 2rem; border-top: 4px solid var(--foreground); border-bottom: 4px solid var(--foreground); position: relative; z-index: 2; background: var(--background);">
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <!-- SLIDE 3: Project 2 -->
+        <section class="slide" id="slide-2" onclick="nextSlide()">
+            <div class="brutalist-container project-card"
+                style="background: var(--background); color: var(--foreground);">
+                <img src="img/2dd0d1103e17e93f2e0a52e8c7b8eed1.jpg" alt="Complejo Habitacional Zero"
+                    class="project-img">
+                <div class="project-info">
+                    <div>
+                        <h3 style="font-size: 3rem; margin-bottom: 1rem;">COMPLEJO ZERO</h3>
+                        <p style="font-family: 'Space Mono', monospace; font-size: 1.5rem; opacity: 0.8;">2023 / BERLIN
+                        </p>
+                    </div>
+                    <button class="brutalist-btn">VER DETALLE</button>
+                </div>
+            </div>
+            <div class="click-indicator">VER MANIFIESTO</div>
+        </section>
+
+        <!-- SLIDE 4: Manifiesto -->
+        <section class="slide" id="slide-3" onclick="nextSlide()">
+            <div class="brutalist-container" style="text-align: center;">
                 <h2 class="text-large" style="margin-bottom: 2rem;">EL MANIFIESTO</h2>
                 <p style="font-size: 1.5rem; line-height: 1.8; font-weight: 500;">
                     La estética surge de la funcionalidad desnuda. Rechazamos los ornamentos superfluos. Abrazamos la
                     verdad de los materiales, las texturas ásperas y la escala monumental. Nuestra arquitectura no pide
                     permiso; se impone en el paisaje urbano con honestidad absoluta.
                 </p>
+                <br>
+                <h1 style="font-size: 4rem;">JST.[studio]</h1>
             </div>
+            <div class="click-indicator">VOLVER AL INICIO</div>
         </section>
     </main>
 
     <script>
-        // Three.js Interactive Background Setup
+        // --- Navigation Logic ---
+        let currentSlide = 0;
+        const totalSlides = 4;
+
+        function nextSlide() {
+            // Hide current
+            document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+            // Increment
+            currentSlide = (currentSlide + 1) % totalSlides;
+            // Show next
+            document.getElementById(`slide-${currentSlide}`).classList.add('active');
+
+            // Adjust 3D camera slightly on click to emphasize transition
+            gsapCameraTarget.z = 1 + (currentSlide * 0.5);
+        }
+
+        // --- Hyper-Realistic 3D Parallax Logic ---
         const canvas = document.querySelector('#bg-canvas');
         const scene = new THREE.Scene();
 
-        // Match background color from CSS
-        const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        scene.background = new THREE.Color(isDarkMode ? '#000000' : '#ffffff');
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.z = 2; // Close to the plane
 
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // Create brutalist raw shapes
-        const geometry1 = new THREE.BoxGeometry(4, 12, 4);
-        const geometry2 = new THREE.CylinderGeometry(2, 2, 10, 6); // Hexagonal cylinder
-        const geometry3 = new THREE.DodecahedronGeometry(3);
+        // Load Hyper-realistic texture
+        const textureLoader = new THREE.TextureLoader();
+        // Fallback to local bg.png generated earlier
+        const texture = textureLoader.load('img/breuer-building.jpg');
 
-        // Raw concrete material simulation
-        const material = new THREE.MeshStandardMaterial({
-            color: isDarkMode ? 0x333333 : 0xd0d0d0,
-            roughness: 0.9,
-            metalness: 0.1,
-            flatShading: true // Gives it the sharp architectural edges
+        // We use a plane geometry that perfectly covers the screen + 20% margin for parallax movement
+        const geometry = new THREE.PlaneGeometry(16, 9, 32, 32);
+
+        // ShaderMaterial for deep 2.5D Parallax Distortion effect
+        const material = new THREE.ShaderMaterial({
+            uniforms: {
+                uTexture: { value: texture },
+                uMouse: { value: new THREE.Vector2(0, 0) },
+                uTime: { value: 0.0 }
+            },
+            vertexShader: `
+                uniform vec2 uMouse;
+                uniform float uTime;
+                varying vec2 vUv;
+                
+                void main() {
+                    vUv = uv;
+                    vec3 pos = position;
+                    
+                    // Creates a subtle 3D depth wave effect based on mouse movement
+                    float dist = distance(uv, vec2(0.5) + uMouse * 0.2);
+                    pos.z += sin(dist * 10.0 - uTime * 2.0) * 0.05;
+                    
+                    // Tilt the plane based on mouse (parallax)
+                    pos.x += uMouse.x * 0.5;
+                    pos.y += uMouse.y * 0.5;
+                    
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform sampler2D uTexture;
+                varying vec2 vUv;
+                
+                void main() {
+                    vec4 color = texture2D(uTexture, vUv);
+                    
+                    // Add subtle vignette/shadow for drama
+                    float dist = distance(vUv, vec2(0.5));
+                    color.rgb -= dist * 0.5;
+                    
+                    gl_FragColor = color;
+                }
+            `
         });
 
-        const shape1 = new THREE.Mesh(geometry1, material);
-        shape1.position.set(-8, 0, -12);
-        scene.add(shape1);
-
-        const shape2 = new THREE.Mesh(geometry2, material);
-        shape2.position.set(8, -2, -15);
-        scene.add(shape2);
-
-        const shape3 = new THREE.Mesh(geometry3, material);
-        shape3.position.set(0, 5, -20);
-        scene.add(shape3);
-
-        // Harsh lighting typical of brutalist photography
-        const ambientLight = new THREE.AmbientLight(0xffffff, isDarkMode ? 0.2 : 0.6);
-        scene.add(ambientLight);
-
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
-        directionalLight.position.set(5, 10, 5);
-        scene.add(directionalLight);
-
-        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
-        directionalLight2.position.set(-5, -5, -5);
-        scene.add(directionalLight2);
-
-        camera.position.z = 5;
+        const plane = new THREE.Mesh(geometry, material);
+        scene.add(plane);
 
         // Interaction state
         let mouseX = 0;
         let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
         let windowHalfX = window.innerWidth / 2;
         let windowHalfY = window.innerHeight / 2;
 
+        let gsapCameraTarget = { z: 2 };
+
         document.addEventListener('mousemove', (event) => {
-            mouseX = (event.clientX - windowHalfX);
-            mouseY = (event.clientY - windowHalfY);
+            // Normalized mouse coordinates from -1 to 1
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            // Invert Y axis
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
         });
 
         const clock = new THREE.Clock();
@@ -164,24 +193,20 @@
             requestAnimationFrame(animate);
             const elapsedTime = clock.getElapsedTime();
 
-            // Subtle levitation
-            shape1.position.y = Math.sin(elapsedTime * 0.5) * 0.5;
-            shape2.position.y = -2 + Math.sin(elapsedTime * 0.3) * 0.5;
-            shape3.position.y = 5 + Math.sin(elapsedTime * 0.4) * 0.5;
+            // Smooth interpolation for mouse
+            targetX += (mouseX - targetX) * 0.05;
+            targetY += (mouseY - targetY) * 0.05;
 
-            // Slow menacing rotation
-            shape1.rotation.x += 0.001;
-            shape1.rotation.y += 0.002;
+            // Update shader uniforms
+            material.uniforms.uMouse.value.set(targetX, targetY);
+            material.uniforms.uTime.value = elapsedTime;
 
-            shape2.rotation.x -= 0.001;
-            shape2.rotation.z += 0.001;
+            // Physical plane rotation to make it feel like an object
+            plane.rotation.y = targetX * 0.1;
+            plane.rotation.x = -targetY * 0.1;
 
-            shape3.rotation.y += 0.0015;
-
-            // Interactive camera movement (parallax)
-            camera.position.x += (mouseX * 0.005 - camera.position.x) * 0.05;
-            camera.position.y += (-mouseY * 0.005 - camera.position.y) * 0.05;
-            camera.lookAt(scene.position);
+            // Smooth camera transition on click
+            camera.position.z += (gsapCameraTarget.z - camera.position.z) * 0.05;
 
             renderer.render(scene, camera);
         }
@@ -192,23 +217,22 @@
         window.addEventListener('resize', () => {
             windowHalfX = window.innerWidth / 2;
             windowHalfY = window.innerHeight / 2;
-            camera.aspect = window.innerWidth / window.innerHeight;
+
+            // Adjust plane size to cover screen and keep aspect ratio
+            const aspect = window.innerWidth / window.innerHeight;
+            if (aspect > 16 / 9) {
+                plane.scale.set(aspect / (16 / 9), 1, 1);
+            } else {
+                plane.scale.set(1, (16 / 9) / aspect, 1);
+            }
+
+            camera.aspect = aspect;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // System theme change handling
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                scene.background = new THREE.Color('#000000');
-                material.color.setHex(0x333333);
-                ambientLight.intensity = 0.2;
-            } else {
-                scene.background = new THREE.Color('#ffffff');
-                material.color.setHex(0xd0d0d0);
-                ambientLight.intensity = 0.6;
-            }
-        });
+        // Initial sizing trigger
+        window.dispatchEvent(new Event('resize'));
     </script>
 </body>
 
