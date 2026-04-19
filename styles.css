@@ -22,8 +22,10 @@
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* NO SCROLL DOWN */
   background-color: var(--background);
   color: var(--foreground);
   font-family: 'Inter', sans-serif;
@@ -38,17 +40,70 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: 1;
-  /* Below the main content which is z-index 2 */
   pointer-events: none;
-  /* Allows clicking through the canvas to the content */
 }
 
-/* Ensure main content wrappers sit above the canvas */
-main {
+/* Navigation & Slides */
+#app-container {
   position: relative;
+  width: 100vw;
+  height: 100vh;
   z-index: 2;
-  /* Add transparent background to hero so canvas shows through */
-  background: transparent;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease-in-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* Click Indicator */
+.click-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  animation: pulse 2s infinite;
+  cursor: pointer;
+  background: var(--background);
+  color: var(--foreground);
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--foreground);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
 }
 
 h1,
@@ -74,28 +129,25 @@ a {
   box-shadow: 8px 8px 0 var(--foreground);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   background: var(--background);
-  /* Solid backgrounds inside containers */
-}
-
-.brutalist-container:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 12px 12px 0 var(--foreground);
+  padding: 2rem;
+  width: 90%;
+  max-width: 1000px;
 }
 
 /* Project Cards Specifics */
 .project-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   padding: 0;
-  /* Removing padding to make image bleed */
+  height: 60vh;
 }
 
 .project-img {
-  width: 100%;
-  height: 350px;
+  width: 50%;
+  height: 100%;
   object-fit: cover;
-  border-bottom: var(--border-thickness) solid var(--foreground);
+  border-right: var(--border-thickness) solid var(--foreground);
   filter: grayscale(100%) contrast(120%);
   transition: filter 0.4s ease;
 }
@@ -105,11 +157,11 @@ a {
 }
 
 .project-info {
-  padding: 2rem;
+  width: 50%;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-grow: 1;
 }
 
 .brutalist-btn {
@@ -157,62 +209,13 @@ a {
 
 /* Typography Scale */
 .text-huge {
-  font-size: clamp(4rem, 10vw, 12rem);
+  font-size: clamp(3rem, 8vw, 8rem);
   line-height: 0.9;
   margin-bottom: 2rem;
-  /* Adding text shadow so it's readable over the 3D shapes */
   text-shadow: 2px 2px 0 var(--background), -2px -2px 0 var(--background), 2px -2px 0 var(--background), -2px 2px 0 var(--background);
+  text-align: center;
 }
 
 .text-large {
   font-size: clamp(2rem, 5vw, 4rem);
-}
-
-/* Layout Utilities */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 2rem;
-}
-
-.col-span-full {
-  grid-column: 1 / -1;
-}
-
-.col-span-half {
-  grid-column: span 6;
-}
-
-@media (max-width: 768px) {
-  .col-span-half {
-    grid-column: 1 / -1;
-  }
-}
-
-/* Animations */
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-container {
-  overflow: hidden;
-  white-space: nowrap;
-  border-top: var(--border-thickness) solid var(--foreground);
-  border-bottom: var(--border-thickness) solid var(--foreground);
-  padding: 1rem 0;
-}
-
-.marquee-content {
-  display: inline-block;
-  animation: marquee 20s linear infinite;
-  font-family: 'Space Mono', monospace;
-  font-size: 2rem;
-  font-weight: 700;
-  text-transform: uppercase;
 }
